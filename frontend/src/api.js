@@ -23,8 +23,8 @@ class JoblyApi {
     const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     console.log(headers);
     const params = (method === "get")
-        ? data
-        : {};
+      ? data
+      : {};
 
     try {
       return (await axios({ url, method, data, params, headers })).data;
