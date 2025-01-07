@@ -1,45 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import JoblyApi from "./api";
 import { jwtDecode } from "jwt-decode";
+import { Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import './AuthForms.css';
 
 function LogIn() {
-
-    /**Login form. */
-
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [shouldRedirect, setShouldRedirect] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await JoblyApi.request("auth/token", { username, password }, "post");
-        if (result && result.token) {
-            const decodeUser = jwtDecode(result.token).username;
-            localStorage.setItem("user-token", JSON.stringify(result.token))
-            localStorage.setItem("user-token", localStorage.getItem("user-token").substring(1, localStorage.getItem("user-token").length - 1));
-            localStorage.setItem("user-name", JSON.stringify(decodeUser));
-            localStorage.setItem("user-name", localStorage.getItem("user-name").substring(1, localStorage.getItem("user-name").length - 1));
-            setShouldRedirect(true);
+        try {
+            const result = await JoblyApi.request("auth/token", { username, password }, "post");
+            if (result && result.token) {
+                const decodedUser = jwtDecode(result.token).username;
+                localStorage.setItem("user-token", result.token);
+                localStorage.setItem("user-name", decodedUser);
+                localStorage.setItem("reload", "true");
+                setShouldRedirect(true);
+            }
+        } catch (err) {
+            setError(err.message || "Failed to log in.");
         }
-        //TODO: create a way to store username into localstorage and error handling
-    }
+    };
 
     return (
-        <form>
-            <label>
-                Username
-                <input type="text" onChange={e => setUsername(e.target.value)}></input>
-            </label>
-            <label>
-                Password
-                <input type="password" onChange={e => setPassword(e.target.value)}></input>
-            </label>
-            <button onClick={handleSubmit}>LOG IN</button>
+        <div className="auth-form-container">
+            <h2 className="mb-4">Log In</h2>
+            <Form onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label for="username">Username</Label>
+                    <Input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="password">Password</Label>
+                    <Input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </FormGroup>
+                {error && <Alert color="danger">{error}</Alert>}
+                <Button color="primary" block>LOG IN</Button>
+            </Form>
             {shouldRedirect && <Navigate to="/" />}
-        </form>
-    )
+        </div>
+    );
 }
 
 export default LogIn;

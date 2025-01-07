@@ -1,0 +1,70 @@
+.profile-container {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.profile-container form {
+    margin-top: 20px;
+}
+
+.profile-container .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-container label {
+    font-weight: bold;
+    color: #555;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="email"] {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.profile-container input[type="text"]:focus,
+.profile-container input[type="email"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.profile-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.profile-update-alert {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: green;
+    color: white;
+}
