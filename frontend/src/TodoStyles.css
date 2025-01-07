@@ -1,0 +1,138 @@
+.jobly-container {
+    padding: 25px;
+    max-width: 1000px;
+    margin: 30px auto;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+    transition: box-shadow 0.3s ease;
+}
+
+.jobly-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.jobly-container h2 {
+    font-size: 2.2rem;
+    color: #343a40;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.jobly-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.jobly-search-input {
+    padding: 12px 15px;
+    width: 50%;
+    margin: 0;
+    border: 1px solid #ced4da;
+    border-radius: 20px 0 0 20px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobly-search-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.jobly-search-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.jobly-search-button:hover {
+    background-color: #2980b9;
+}
+
+.jobly-loading {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.jobly-todo-container {
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jobly-todo-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.jobly-todo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.jobly-todo-text-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.jobly-todo-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.jobly-todo-text {
+    font-size: 0.9rem;
+    color: #495057;
+    margin: 3px 0;
+}
+
+.jobly-apply-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    background-color: #2ecc71;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.jobly-apply-button:hover {
+    background-color: #27ae60;
+    transform: scale(1.05);
+}
+
+.jobly-apply-button:disabled {
+    background-color: #bdc3c7;
+    cursor: default;
+    transform: none;
+}
