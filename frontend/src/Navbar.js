@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import { NavLink, Navigate } from "react-router-dom";
-import { Navbar, Nav, NavItem } from "reactstrap";
- 
+import { Navbar, Nav, NavItem, Button } from "reactstrap";
+
 function NavBar() {
   const [shouldRedirect, setShouldRedirect] = useState(false);
- 
+
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem("user-token");
-    setShouldRedirect(true);
     window.location.reload();
+    localStorage.removeItem("user-token");
+    localStorage.removeItem("user-name");
+    localStorage.setItem("reload", "true");
+    setShouldRedirect(true);
   };
- 
+
+  const isLoggedIn = !!localStorage.getItem("user-token");
+  const userName = localStorage.getItem("user-name");
+
   return (
     <div className="navbar-container">
       <Navbar expand="md" className="custom-navbar">
@@ -20,21 +25,25 @@ function NavBar() {
           Jobly
         </NavLink>
         <Nav className="nav-links">
-          {localStorage.getItem("user-token") ? (
-            <NavItem>
-              <button onClick={handleLogout} className="logout-button">
-                Logout
-              </button>
+          {isLoggedIn ? (
+            <>
               <NavLink to="/jobs" className="nav-item-link">
                 Jobs
               </NavLink>
               <NavLink to="/companies" className="nav-item-link">
-              Companies
+                Companies
               </NavLink>
               <NavLink to="/profile" className="nav-item-link">
                 Profile
               </NavLink>
-            </NavItem>
+              <Button
+                color="danger"
+                onClick={handleLogout}
+                className="logout-button"
+              >
+                Logout from {userName}
+              </Button>
+            </>
           ) : (
             <>
               <NavItem>
@@ -55,5 +64,5 @@ function NavBar() {
     </div>
   );
 }
- 
+
 export default NavBar;

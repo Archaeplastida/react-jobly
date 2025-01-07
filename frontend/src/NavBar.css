@@ -1,42 +1,98 @@
 .navbar-container {
-    background: linear-gradient(to right, #8e44ad, #3498db);
-    padding: 10px 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+  background: linear-gradient(to right, #007bff, #28a745);
+  opacity: 0.88;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  margin-right: auto;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #f1c40f;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item-link {
+  font-size: 1.1rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.nav-item-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f1c40f;
+  text-decoration: none;
+}
+
+.nav-item-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #f1c40f;
+  color: #f1c40f;
+}
+
+.logout-button {
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 7px 15px;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
   }
-   
-  .navbar-brand {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #fff;
-    text-decoration: none;
-  }
-   
+
   .nav-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 15px;
   }
-   
+
   .nav-item-link {
-    font-size: 1rem;
-    color: #fff;
-    text-decoration: none;
-    transition: font-weight 0.3s ease, text-decoration 0.3s ease;
-    margin:15px;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
   }
-   
-  .nav-item-link:hover {
-    font-weight: bold;
-    text-decoration: underline;
+
+  .logout-button {
+    margin-top: 10px;
+    align-self: flex-start;
   }
-   
-  .nav-item-link.active {
-    font-weight: bold;
-    border-bottom: 2px solid #fff;
-  }
+}
